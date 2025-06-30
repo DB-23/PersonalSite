@@ -21,10 +21,16 @@
 </header>
 
 <main>
-  <section id="about" class="section">
-    <img src="img/portrait.png" alt="portrait" class="portrait" width="100px" height="100px" />
-    <h1>Cześć, jestem Dariusz Bochyński</h1>
-    <p>Technik, student, pasjonat</p>
+  <section id="about" class="section about-section">
+    <div class="about-container">
+      <div class="profile-pic">
+        <img src="img/portrait.png" alt="Dariusz Bochyski" />
+      </div>
+      <div class="about-text">
+        <h1>Cześć, jestem Dariusz Bochyński</h1>
+        <p>Dowiedz się więcej</p>
+      </div>
+    </div>
   </section>
 
   <section id="skills" class="section">
@@ -38,15 +44,128 @@
   </section>
   <section id="education" class="section">
     <h2>Wykształcenie</h2>
-    <p><strong>Software Developer</strong> – Firma XYZ (2022–obecnie)</p>
-    <p>Tworzenie aplikacji webowych, praca w SCRUM, integracje z API</p>
+    <div class="education-entry">
+      <h3>Informatyka</h3>
+      <p class="school">Politechnika Lubelska</p>
+      <p class="date">2022 – obecnie</p>
+      <p class="details">Semestr VII</p>
+    </div>
+
+    <div class="education-entry">
+      <h3>Technik teleinformatyk</h3>
+      <p class="school">Zespół Szkół Elektronicznych w Lublinie</p>
+      <p class="date">2018 – 2022</p>
+      <p class="details">Kwalifikacje zawodowe: EE.10, EE.11</p>
+    </div>
   </section>
+
 
   <section id="experience" class="section">
     <h2>Doświadczenie zawodowe</h2>
-    <p><strong>Software Developer</strong> – Firma XYZ (2022–obecnie)</p>
-    <p>Tworzenie aplikacji webowych, praca w SCRUM, integracje z API</p>
+
+    <div class="experience-entry" onclick="toggleDetails(this)">
+      <div class="entry-content">
+        <div class="entry-text">
+          <h3>DHL Express</h3>
+          <p class="occupation">Kurier</p>
+          <p class="date">06.2024 – obecnie</p>
+        </div>
+        <div class="entry-logo">
+          <img src="img/experience/DHL.png" alt="Logo DHL" />
+        </div>
+      </div>
+      <div class="entry-details">
+        <ul>
+          <li>Dostarczanie paczek na terenie miasta.</li>
+          <li>Obsługa skanera i dokumentacji przewozowej.</li>
+          <li>Bezpośredni kontakt z klientem.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="experience-entry" onclick="toggleDetails(this)">
+      <div class="entry-content">
+        <div class="entry-text">
+          <h3>Mr WOK & Ichiban Sushi</h3>
+          <p class="occupation">Dostawca jedzenia</p>
+          <p class="date">2018 – 2022</p>
+        </div>
+        <div class="entry-logo">
+          <img src="img/experience/mrwok.png" alt="Logo Mr WOK" />
+        </div>
+      </div>
+      <div class="entry-details">
+        <ul>
+          <li>Dostarczanie zamówień do klientów.</li>
+          <li>Obsługa terminala płatniczego.</li>
+          <li>Współpraca z zespołem kuchni.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="experience-entry" onclick="toggleDetails(this)">
+      <div class="entry-content">
+        <div class="entry-text">
+          <h3>McDonald's</h3>
+          <p class="occupation">Pracownik restauracji</p>
+          <p class="date">2018 – 2022</p>
+        </div>
+        <div class="entry-logo">
+          <img src="img/experience/McDonalds.png" alt="Logo McDonalds" />
+        </div>
+      </div>
+      <div class="entry-details">
+        <ul>
+          <li>Dostarczanie zamówień do klientów.</li>
+          <li>Obsługa terminala płatniczego.</li>
+          <li>Współpraca z zespołem kuchni.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="experience-entry" onclick="toggleDetails(this)">
+      <div class="entry-content">
+        <div class="entry-text">
+          <h3>Enerman Global</h3>
+          <p class="occupation">Monter instalacji fotowoltaicznych</p>
+          <p class="date">2018 – 2022</p>
+        </div>
+        <div class="entry-logo">
+          <img src="img/experience/enerman.png" alt="Logo Enerman" />
+        </div>
+      </div>
+      <div class="entry-details">
+        <ul>
+          <li>Dostarczanie zamówień do klientów.</li>
+          <li>Obsługa terminala płatniczego.</li>
+          <li>Współpraca z zespołem kuchni.</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="experience-entry" onclick="toggleDetails(this)">
+      <div class="entry-content">
+        <div class="entry-text">
+          <h3>Komenda Wojewódźka Policji</h3>
+          <h5>Wydział Telekomunikacji i Informatyki</h5>
+          <p class="occupation">Praktyki zawodowe</p>
+          <p class="date">2018 – 2022</p>
+        </div>
+        <div class="entry-logo">
+          <img src="img/experience/policja.png" alt="Logo Policja" />
+        </div>
+      </div>
+      <div class="entry-details">
+        <ul>
+          <li>Dostarczanie zamówień do klientów.</li>
+          <li>Obsługa terminala płatniczego.</li>
+          <li>Współpraca z zespołem kuchni.</li>
+        </ul>
+      </div>
+    </div>
   </section>
+
 
   <section id="volunteering" class="section">
     <h2>Wolontariat</h2>
@@ -65,5 +184,15 @@
 <footer>
   <p>&copy; 2025 Dariusz Bochyński. Wszelkie prawa zastrzeżone.</p>
 </footer>
+<script>
+  function toggleDetails(entry) {
+    const details = entry.querySelector('.entry-details');
+    if (details.style.display === 'block') {
+      details.style.display = 'none';
+    } else {
+      details.style.display = 'block';
+    }
+  }
+</script>
 </body>
 </html>
