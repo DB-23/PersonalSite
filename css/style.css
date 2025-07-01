@@ -268,6 +268,25 @@ footer {
   transform: scale(1.05);
   background-color: #eef5ff;
 }
+.skill-category {
+  margin-bottom: 2rem;
+}
+
+.skill-category h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.skill-category i {
+  color: black;
+  font-size: 1.2rem;
+}
+
 
 
 
