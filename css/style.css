@@ -5,28 +5,48 @@
   box-sizing: border-box;
 }
 
+/* --- ZMIENNE CSS DLA ŁATWIEJSZEGO ZARZĄDZANIA --- */
+:root {
+  --background-light: #f9f9f9;
+  --background-card: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #333;
+  --text-light: #888;
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-color: #e5e5e5;
+  --header-height: 68px; /* Przybliżona wysokość nagłówka */
+}
+
+html {
+  scroll-behavior: smooth; /* Płynne przewijanie do sekcji */
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #1d1d1f;
+  background-color: var(--background-light);
+  color: var(--text-primary);
   line-height: 1.6;
 }
 
+/* --- NAGŁÓWEK I NAWIGACJA --- */
 header {
-  background-color: #ffffff;
+  background-color: var(--background-card);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: var(--header-height);
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .logo {
@@ -43,8 +63,9 @@ header {
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 500;
+  padding: 0.5rem 0;
   transition: color 0.2s ease-in-out;
 }
 
@@ -52,44 +73,50 @@ header {
   color: black;
 }
 
+/* Przycisk "Hamburger Menu" - domyślnie ukryty na desktopie */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* --- SEKCJE I GŁÓWNA TREŚĆ --- */
 .section {
   max-width: 900px;
   margin: 3rem auto;
   padding: 1rem 2rem;
 }
 
-h1, h2 {
+h1, h2, h3, h4, h5 {
   color: #000;
   margin-bottom: 1rem;
 }
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
 
 ul {
   list-style: disc;
   margin-left: 1.5rem;
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  background-color: #f0f0f0;
-  color: #888;
-}
+/* --- SEKCJA "O MNIE" --- */
 .about-container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap;
 }
 
 .profile-pic img {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-medium);
   transition: transform 0.3s ease;
-  border: 2px solid #e5e5e5;
+  border: 2px solid var(--border-color);
 }
 
 .profile-pic img:hover {
@@ -98,72 +125,44 @@ footer {
 
 .about-text {
   flex: 1;
-  min-width: 260px;
 }
-@media (max-width: 600px) {
-  .about-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-.education-entry {
-  background-color: #fff;
+
+/* --- SEKCJE "EDUKACJA" i "DOŚWIADCZENIE" --- */
+.education-entry,
+.experience-entry {
+  background-color: var(--background-card);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.education-entry:hover {
-  transform: translateY(-4px);
-}
-
-.education-entry h3 {
-  margin-bottom: 0.5rem;
-  color: #000;
-}
-
-.education-entry .school {
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 0.3rem;
-}
-
-.education-entry .date {
-  font-size: 0.95rem;
-  color: #888;
-  margin-bottom: 0.5rem;
-}
-
-.education-entry .details {
-  font-size: 0.95rem;
-  color: #333;
-}
-.experience-entry {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
-  padding: 1.2rem;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
+.education-entry:hover,
 .experience-entry:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.experience-entry {
+  cursor: pointer;
 }
 
 .entry-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .entry-text {
   flex: 1;
 }
+
+.entry-text h3 { margin-bottom: 0.25rem; }
+.entry-text .school,
+.entry-text .occupation { font-weight: 500; color: #555; margin-bottom: 0.3rem; }
+.entry-text .date { font-size: 0.9rem; color: var(--text-light); }
 
 .entry-logo {
   width: 64px;
@@ -174,6 +173,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .entry-logo img {
@@ -185,110 +185,14 @@ footer {
 .entry-details {
   margin-top: 1rem;
   display: none;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.4s ease;
+  padding-left: 0.5rem; /* Lepsze wcięcie listy */
 }
 
 .entry-details ul {
   padding-left: 1.2rem;
-  color: #333;
+  color: var(--text-secondary);
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-
-}
-.social-links {
-  margin-top: 10px;
-}
-
-.social-links a {
-  margin-right: 15px;
-  color: #000;
-  text-decoration: none;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.social-links a:hover {
-  color: #555;
-  transform: scale(1.1);
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.skill-item {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  font-weight: 500;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.skill-item i {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: black;
-}
-
-.skill-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.skill-item {
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.skill-item i {
-  display: block;
-  font-size: 24px;
-  margin-bottom: 0.5rem;
-  color: black;
-}
-
-.skill-item:hover {
-  transform: scale(1.05);
-  background-color: #eef5ff;
-}
-.skill-category {
-  margin-bottom: 2rem;
-}
-
-.skill-category h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #333;
-}
-
-.skill-category i {
-  color: black;
-  font-size: 1.2rem;
-}
-
-
 
 .entry-details a i {
   color: black;
@@ -300,7 +204,154 @@ footer {
   transform: scale(1.1);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SEKCJA "UMIEJĘTNOŚCI" --- */
+.skill-category {
+  margin-bottom: 2rem;
+}
+
+.skill-category h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.skill-item {
+  background-color: var(--background-card);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-light);
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.skill-item i {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: black;
+}
+
+.skill-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  background-color: #eef5ff;
+}
+
+/* --- KONTAKT I STOPKA --- */
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-links a {
+  margin-right: 15px;
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: inline-block; /* Lepsze działanie transform */
+}
+
+.social-links a:hover {
+  color: #555;
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  background-color: #f0f0f0;
+  color: var(--text-light);
+  margin-top: 2rem;
+}
 
 
+/* ======================================================= */
+/* --- MEDIA QUERIES DLA URZĄDZEŃ MOBILNYCH --- */
+/* ======================================================= */
 
+@media (max-width: 768px) {
+  /* --- Zmiany ogólne na mobile --- */
+  .section {
+    margin: 2rem auto;
+    padding: 1rem 1rem; /* Mniejszy padding na boki */
+  }
 
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  .logo { font-size: 1.3rem; }
+
+  /* --- Responsywna nawigacja --- */
+  .menu-toggle {
+    display: block; /* Pokazujemy przycisk hamburgera */
+    z-index: 1001; /* Upewniamy się, że jest na wierzchu */
+  }
+
+  .nav-links {
+    position: fixed; /* Pozycjonowanie względem okna przeglądarki */
+    top: 0;
+    right: 0;
+    width: 80%; /* Menu nie zajmuje całej szerokości */
+    max-width: 300px;
+    height: 100vh; /* Pełna wysokość ekranu */
+
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efekt rozmytego tła (działa w nowszych przeglądarkach) */
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    /* Ukrycie menu poza ekranem */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Klasa dodawana przez JS do otwierania menu */
+  .nav-links.nav-open {
+    transform: translateX(0);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem; /* Większe linki dla łatwiejszego klikania */
+  }
+
+  /* --- Sekcja "O mnie" na mobile --- */
+  .about-container {
+    flex-direction: column; /* Układ kolumnowy */
+    text-align: center;
+  }
+
+  .profile-pic img {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* --- Karty Doświadczenia/Edukacji na mobile --- */
+  .entry-content {
+    align-items: flex-start; /* Lepsze ułożenie przy zawijaniu tekstu */
+  }
+
+  .entry-logo {
+    width: 50px;
+    height: 50px;
+  }
+}

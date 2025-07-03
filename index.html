@@ -23,7 +23,12 @@
       <li><a href="#volunteering">Wolontariat</a></li>
       <li><a href="#contact">Kontakt</a></li>
       <li><a href="CV.pdf" download>Pobierz CV</a></li>
+
     </ul>
+    <button class="menu-toggle" aria-label="Przełącz nawigację">
+      <i class="fas fa-bars"></i>
+    </button>
+
   </nav>
 </header>
 
@@ -65,6 +70,7 @@
       <div class="skill-item"><i class="fab fa-c"></i><span>C</span></div>
       <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
     </div>
+    <br>
 
     <h3>Umiejętności techniczne</h3>
     <br>
@@ -394,5 +400,42 @@
     }
   }
 </script>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navLinksItems = document.querySelectorAll('.nav-links li a');
+  const icon = menuToggle.querySelector('i');
+
+  // Funkcja do przełączania menu
+  function toggleMenu() {
+    navLinks.classList.toggle('nav-open');
+    const isOpen = navLinks.classList.contains('nav-open');
+
+    // Zmiana ikony hamburgera na "X" i z powrotem
+    if (isOpen) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  // Otwieranie/zamykanie menu po kliknięciu w przycisk
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Zamykanie menu po kliknięciu w dowolny link w nawigacji
+  navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('nav-open')) {
+        toggleMenu();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
