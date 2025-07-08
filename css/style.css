@@ -230,6 +230,12 @@ ul {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+.skills-grid-p {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 0fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 
 .skill-item {
   background-color: var(--background-card);
